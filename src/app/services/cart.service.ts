@@ -35,4 +35,12 @@ export class CartService {
     this.cart.next({ items: [] })
     this._snackBar.open('Cart is now empty.', 'Ok', { duration: 3000 })
   }
+
+  removeFromCart(item: CartItem):void {
+    const filteredCart = this.cart.value.items
+      .filter((_item) => item.id !== _item.id)
+
+    this.cart.next({ items: filteredCart })
+    this._snackBar.open('1 item removed from cart.', 'Ok', { duration: 3000 })
+  }
 }
