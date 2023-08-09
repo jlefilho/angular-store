@@ -25,4 +25,10 @@ export class CartService {
     this._snackBar.open('1 added to cart.', 'Ok', { duration: 3000 })
     console.log(this.cart.value)
   }
+
+  getTotal(items: CartItem[]): number {
+    return items
+    .map(item => item.price * item.quantity)
+    .reduce((prev, curr) => prev + curr, 0)
+  }
 }
