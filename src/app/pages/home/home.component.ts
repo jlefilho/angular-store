@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   products: Product[] | undefined;
   productsSubscription: Subscription | undefined;
   sort = 'desc';
-  count = '12';
+  count = 12;
 
   constructor(private cartService: CartService, private storeService: StoreService) { }
   
@@ -52,6 +52,16 @@ export class HomeComponent implements OnInit, OnDestroy {
       quantity: 1,
       id: product.id
     })
+  }
+
+  onItemsCountChange(newCount: number): void{
+    this.count = newCount;
+    this.getProducts()
+  }
+
+  onSortChange(newSort: string): void{
+    this.sort = newSort;
+    this.getProducts()
   }
 
   getProducts(): void {
